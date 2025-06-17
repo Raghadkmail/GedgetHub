@@ -1,0 +1,126 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+header h3 {
+      font-size: 1.5rem;
+      margin-top: 20px;
+    }
+    header h1 {
+      font-size: 5rem;
+      margin-top: 10px;
+     
+    }
+    header button {
+        display: inline-block;
+  margin: 20px 5%;
+  padding: 20px 30px;
+  
+}
+.image-box {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.image-box img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+ .overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4); /* خلفية شفافة */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+
+.dropdown-item {
+  color: var(--dark-color);
+  text-transform: capitalize;
+}
+
+.dropdown-item.active,
+.dropdown-item:hover,
+.dropdown-item:active {
+  color: var(--dark-color);
+  background-color: var(--secondary-color);
+} 
+
+
+.transparent-box {
+  background: rgba(255, 255, 255, 0.15); 
+ margin-top:20%;
+  height: 40%;
+  width: 100%;
+}
+
+.cont h2{
+    font-size: 4rem;
+   
+    text-align: center;
+}
+.cont h4{
+    font-size: 1.5rem;
+    text-align: center;
+   
+}
+.cont btnu{
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 3rem ;
+    border-radius: none;
+width: 40%;
+}
+
+
+ .product-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-container .hover-btn {
+    position: absolute;
+    top: 50%;
+    width: 50%;
+    left: 50%;
+    height: 15%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    border: none;
+  }
+
+  .product-container:hover .hover-btn {
+    opacity: 1;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
