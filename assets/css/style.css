@@ -4,6 +4,18 @@
   box-sizing: border-box;
 }
 
+:root {
+  --body-font: "Merriweather", serif;
+  --heading-font: "Work Sans", sans-serif;
+}
+
+body {
+  font-family: var(--body-font);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+}
 
 header h3 {
       font-size: 1.5rem;
@@ -43,17 +55,7 @@ header h3 {
 }
 
 
-.dropdown-item {
-  color: var(--dark-color);
-  text-transform: capitalize;
-}
 
-.dropdown-item.active,
-.dropdown-item:hover,
-.dropdown-item:active {
-  color: var(--dark-color);
-  background-color: var(--secondary-color);
-} 
 
 
 .transparent-box {
@@ -108,14 +110,6 @@ width: 40%;
 
 
 
-
-
-
-
-
-
-
-
   .play-btn {
   position: absolute;
   top: 50%;
@@ -128,6 +122,20 @@ width: 40%;
   border: none;
   z-index: 10;
 }
+.link{
+  text-decoration: none;
+  color: black !important;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.article-names{
+text-transform: capitalize;
+  text-decoration: none;
+  color: black !important ;
+  font-size: 2rem;
+text-align: start;  
+font-weight: bold;
+}
 
 
 
@@ -136,7 +144,43 @@ width: 40%;
 
 
 
+ .product-card {
+      overflow: hidden;
+      position: relative;
+    }
 
+    .product-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 80%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      color: black;
+      text-align: center;
+      padding: 10px 15px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 2;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    .product-card:hover .product-overlay {
+      opacity: 1;
+    }
+
+    .product-overlay .icons i {
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin: 0 5px;
+      transition: color 0.2s ease;
+    }
+
+    .product-overlay .icons i:hover {
+      color: #000;
+    }
 
 
 

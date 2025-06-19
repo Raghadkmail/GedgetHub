@@ -7,7 +7,12 @@
 <link rel="stylesheet" href="assets/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
   
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
   <style>
     header{
  background-image: url(assets/img/header-img.jpg);
@@ -18,11 +23,6 @@
     display: flex;
     flex-direction: column;
 }
-
-  
-
-
-    
 
   </style>
 </head>
@@ -140,108 +140,208 @@
   </div>
 </section>
 
-<section class=" container-fluid mt-5 new-arrival-section px-0">
 
-  <div class="d-flex justify-content-between align-items-center mb-4">
+
+<section class="container-fluid mt-5 new-arrival-section px-0">
+  <div class="d-flex justify-content-between align-items-center mb-4 px-3">
     <h3 class="display-5 fw-medium">NEW ARRIVAL ITEMS</h3>
     <a href="#" class="btn btn-dark">SHOP ALL</a>
   </div>
 
-  <!-- mobile-->
+  <!-- Mobile -->
   <div class="d-block d-md-none">
-    <div id="mobileCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+    <div id="mobileCarousel1" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
       <div class="carousel-inner">
         <div class="carousel-item active text-center">
-          <img src="assets/img/new-arive/item1.jpg" class="img-fluid" alt="1">
-          <h6 class="mt-2">PRODUCT ONE</h6>
-          <p>$22.00</p>
+          <div class="product-card">
+            <img src="assets/img/new-arive/item1.jpg" class="img-fluid" alt="1">
+            <a href="https://example.com/cart" class="text-decoration-none">
+              <div class="product-overlay d-flex flex-column justify-content-center align-items-center">
+                <div class="d-flex align-items-center gap-3 flex-wrap justify-content-center text-dark">
+                  <span class="fw-semibold fs-6 m-0">Add To Cart</span>
+                  <div class="icons d-flex gap-2">
+                    <i class="bi bi-arrow-right"></i>
+                    <i class="bi bi-x-lg"></i>
+                    <i class="bi bi-heart"></i>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <div class="cart-button d-flex justify-content-between align-items-center px-4 py-2">
+              <h6>PRODUCT ONE</h6><h6>$22.00</h6>
+            </div>
+          </div>
         </div>
         <div class="carousel-item text-center">
-          <img src="assets/img/new-arive/item2.jpg" class="img-fluid" alt="2">
-          <h6 class="mt-2">PRODUCT TWO</h6>
-          <p>$22.00</p>
+          <div class="product-card">
+            <img src="assets/img/new-arive/item2.jpg" class="img-fluid" alt="2">
+            <a href="https://example.com/cart" class="text-decoration-none">
+              <div class="product-overlay d-flex flex-column justify-content-center align-items-center">
+                <div class="d-flex align-items-center gap-3 flex-wrap justify-content-center text-dark">
+                  <span class="fw-semibold fs-6 m-0">Add To Cart</span>
+                  <div class="icons d-flex gap-2">
+                    <i class="bi bi-arrow-right"></i>
+                    <i class="bi bi-x-lg"></i>
+                    <i class="bi bi-heart"></i>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <div class="cart-button d-flex justify-content-between align-items-center px-4 py-2">
+              <h6>PRODUCT TWO</h6><h6>$22.00</h6>
+            </div>
+          </div>
         </div>
-         <div class="carousel-item text-center">
-          <img src="assets/img/new-arive/item3.jpg" class="img-fluid" alt="2">
-          <h6 class="mt-2">PRODUCT TWO</h6>
-          <p>$22.00</p>
-        </div>
-          <div class="carousel-item text-center">
-          <img src="assets/img/new-arive/item4.jpg" class="img-fluid" alt="2">
-          <h6 class="mt-2">PRODUCT TWO</h6>
-          <p>$22.00</p>
-        </div>
-         <div class="carousel-item text-center">
-          <img src="assets/img/new-arive/item5.jpg" class="img-fluid" alt="2">
-          <h6 class="mt-2">PRODUCT TWO</h6>
-          <p>$22.00</p>
-        </div>
-         <div class="carousel-item text-center">
-          <img src="assets/img/new-arive/item6.jpg" class="img-fluid" alt="2">
-          <h6 class="mt-2">PRODUCT TWO</h6>
-          <p>$22.00</p>
-        </div>
-
-
-
       </div>
-      
       <div class="carousel-indicators">
-        <button type="button" data-bs-target="#mobileCarousel" data-bs-slide-to="0" class="active"></button>
-        <button type="button" data-bs-target="#mobileCarousel" data-bs-slide-to="1"></button>
-        
+        <button type="button" data-bs-target="#mobileCarousel1" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#mobileCarousel1" data-bs-slide-to="1"></button>
       </div>
     </div>
   </div>
 
-  <!-- laptop-->
+  <!-- Laptop -->
   <div class="d-none d-md-block">
-    <div id="desktopCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+    <div id="desktopCarousel1" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
       <div class="carousel-inner">
+        <!-- start -->
         <div class="carousel-item active">
           <div class="row">
             <div class="col-md-3">
-              <img src="assets/img/new-arive/item1.jpg" class="img-fluid" alt="1">
-              <h6>PRODUCT ONE</h6><p>$22.00</p>
+              <div class="product-card">
+                <img src="assets/img/new-arive/item1.jpg" class="img-fluid" alt="1">
+                <a href="https://example.com/cart" class="text-decoration-none">
+                  <div class="product-overlay d-flex flex-column justify-content-center align-items-center">
+                    <div class="d-flex align-items-center gap-3 flex-wrap justify-content-center text-dark">
+                      <span class="fw-semibold fs-6 m-0">Add To Cart</span>
+                      <div class="icons d-flex gap-2">
+                        <i class="bi bi-arrow-right"></i>
+                        <i class="bi bi-x-lg"></i>
+                        <i class="bi bi-heart"></i>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <div class="cart-button d-flex justify-content-between align-items-center px-4 py-2">
+                  <h6>PRODUCT ONE</h6><h6>$22.00</h6>
+                </div>
+              </div>
             </div>
+
             <div class="col-md-3">
-              <img src="assets/img/new-arive/item2.jpg" class="img-fluid" alt="2">
-              <h6>PRODUCT TWO</h6><p>$22.00</p>
+              <div class="product-card">
+                <img src="assets/img/new-arive/item2.jpg" class="img-fluid" alt="2">
+                <a href="https://example.com/cart" class="text-decoration-none">
+                  <div class="product-overlay d-flex flex-column justify-content-center align-items-center">
+                    <div class="d-flex align-items-center gap-3 flex-wrap justify-content-center text-dark">
+                      <span class="fw-semibold fs-6 m-0">Add To Cart</span>
+                      <div class="icons d-flex gap-2">
+                        <i class="bi bi-arrow-right"></i>
+                        <i class="bi bi-x-lg"></i>
+                        <i class="bi bi-heart"></i>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <div class="cart-button d-flex justify-content-between align-items-center px-4 py-2">
+                  <h6>PRODUCT TWO</h6><h6>$22.00</h6>
+                </div>
+              </div>
             </div>
+
             <div class="col-md-3">
-              <img src="assets/img/new-arive/item3.jpg" class="img-fluid" alt="3">
-              <h6>PRODUCT THREE</h6><p>$22.00</p>
+              <div class="product-card">
+                <img src="assets/img/new-arive/item3.jpg" class="img-fluid" alt="3">
+                <a href="https://example.com/cart" class="text-decoration-none">
+                  <div class="product-overlay d-flex flex-column justify-content-center align-items-center">
+                    <div class="d-flex align-items-center gap-3 flex-wrap justify-content-center text-dark">
+                      <span class="fw-semibold fs-6 m-0">Add To Cart</span>
+                      <div class="icons d-flex gap-2">
+                        <i class="bi bi-arrow-right"></i>
+                        <i class="bi bi-x-lg"></i>
+                        <i class="bi bi-heart"></i>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <div class="cart-button d-flex justify-content-between align-items-center px-4 py-2">
+                  <h6>PRODUCT THREE</h6><h6>$22.00</h6>
+                </div>
+              </div>
             </div>
+
             <div class="col-md-3">
-              <img src="assets/img/new-arive/item4.jpg" class="img-fluid" alt="4">
-              <h6>PRODUCT FOUR</h6><p>$22.00</p>
+              <div class="product-card">
+                <img src="assets/img/new-arive/item4.jpg" class="img-fluid" alt="4">
+                <a href="https://example.com/cart" class="text-decoration-none">
+                  <div class="product-overlay d-flex flex-column justify-content-center align-items-center">
+                    <div class="d-flex align-items-center gap-3 flex-wrap justify-content-center text-dark">
+                      <span class="fw-semibold fs-6 m-0">Add To Cart</span>
+                      <div class="icons d-flex gap-2">
+                        <i class="bi bi-arrow-right"></i>
+                        <i class="bi bi-x-lg"></i>
+                        <i class="bi bi-heart"></i>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <div class="cart-button d-flex justify-content-between align-items-center px-4 py-2">
+                  <h6>PRODUCT FOUR</h6><h6>$22.00</h6>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <!-- change-->
-       <div class="d-none d-md-block">
-    <div id="desktopCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
+
+        <!-- chnge -->
+        <div class="carousel-item">
           <div class="row">
             <div class="col-md-3">
-              <img src="assets/img/new-arive/item4.jpg" class="img-fluid" alt="1">
-              <h6>PRODUCT ONE</h6><p>$22.00</p>
+              <div class="product-card">
+                <img src="assets/img/new-arive/item5.jpg" class="img-fluid" alt="5">
+                <a href="https://example.com/cart" class="text-decoration-none">
+                  <div class="product-overlay d-flex flex-column justify-content-center align-items-center">
+                    <div class="d-flex align-items-center gap-3 flex-wrap justify-content-center text-dark">
+                      <span class="fw-semibold fs-6 m-0">Add To Cart</span>
+                      <div class="icons d-flex gap-2">
+                        <i class="bi bi-arrow-right"></i>
+                        <i class="bi bi-x-lg"></i>
+                        <i class="bi bi-heart"></i>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <div class="cart-button d-flex justify-content-between align-items-center px-4 py-2">
+                  <h6>PRODUCT FIVE</h6><h6>$22.00</h6>
+                </div>
+              </div>
             </div>
+
             <div class="col-md-3">
-              <img src="assets/img/new-arive/item5.jpg" class="img-fluid" alt="2">
-              <h6>PRODUCT TWO</h6><p>$22.00</p>
+              <div class="product-card">
+                <img src="assets/img/new-arive/item6.jpg" class="img-fluid" alt="6">
+                <a href="https://example.com/cart" class="text-decoration-none">
+                  <div class="product-overlay d-flex flex-column justify-content-center align-items-center">
+                    <div class="d-flex align-items-center gap-3 flex-wrap justify-content-center text-dark">
+                      <span class="fw-semibold fs-6 m-0">Add To Cart</span>
+                      <div class="icons d-flex gap-2">
+                        <i class="bi bi-arrow-right"></i>
+                        <i class="bi bi-x-lg"></i>
+                        <i class="bi bi-heart"></i>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <div class="cart-button d-flex justify-content-between align-items-center px-4 py-2">
+                  <h6>PRODUCT SIX</h6><h6>$22.00</h6>
+                </div>
+              </div>
             </div>
-            <div class="col-md-3">
-              <img src="assets/img/new-arive/item6.jpg" class="img-fluid" alt="3">
-              <h6>PRODUCT THREE</h6><p>$22.00</p>
-            </div>
-           
+
           </div>
         </div>
-          
-          </div>
-        </div>
+      </div>
+    </div>
   </div>
 </section>
 <section class="container-fluid mt-5 video-section px-0">
@@ -250,116 +350,240 @@
   
 </video>
 
-
-<section class=" container-fluid mt-5 new-arrival-section px-0">
-
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="display-5 fw-medium">NEW ARRIVAL ITEMS</h3>
-    <a href="#" class="btn btn-dark">SHOP ALL</a>
-  </div>
-
-  <!-- mobile-->
-  <div class="d-block d-md-none">
-    <div id="mobileCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
-      <div class="carousel-inner">
-        <div class="carousel-item active text-center">
-          <img src="assets/img/Best/item1.jpg" class="img-fluid" alt="1">
-          <h6 class="mt-2">PRODUCT ONE</h6>
-          <p>$22.00</p>
-        </div>
-        <div class="carousel-item text-center">
-          <img src="assets/img/Best/item10.jpg" class="img-fluid" alt="2">
-          <h6 class="mt-2">PRODUCT TWO</h6>
-          <p>$22.00</p>
-        </div>
-         <div class="carousel-item text-center">
-          <img src="assets/img/Best/item7.jpg" class="img-fluid" alt="2">
-          <h6 class="mt-2">PRODUCT TWO</h6>
-          <p>$22.00</p>
-        </div>
-          <div class="carousel-item text-center">
-          <img src="assets/img/new-arive/item6.jpg" class="img-fluid" alt="2">
-          <h6 class="mt-2">PRODUCT TWO</h6>
-          <p>$22.00</p>
-        </div>
-        
-         <div class="carousel-item text-center">
-          <img src="assets/img/Best/item9.jpg" class="img-fluid" alt="2">
-          <h6 class="mt-2">PRODUCT TWO</h6>
-          <p>$22.00</p>
-        </div>
- <div class="carousel-item text-center">
-          <img src="assets/img/new-arive/item5.jpg" class="img-fluid" alt="2">
-          <h6 class="mt-2">PRODUCT TWO</h6>
-          <p>$22.00</p>
-        </div>
-
-
-      </div>
-      
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#mobileCarousel" data-bs-slide-to="0" class="active"></button>
-        <button type="button" data-bs-target="#mobileCarousel" data-bs-slide-to="1"></button>
-        
-      </div>
-    </div>
-  </div>
-
-  <!-- laptop-->
-  <div class="d-none d-md-block">
-    <div id="desktopCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="row">
-           
-            <div class="col-md-3">
-              <img src="assets/img/Best/item10.jpg" class="img-fluid" alt="2">
-              <h6>PRODUCT TWO</h6><p>$22.00</p>
-            </div>
-             <div class="col-md-3">
-              <img src="assets/img/Best/item1.jpg" class="img-fluid" alt="1">
-              <h6>PRODUCT ONE</h6><p>$22.00</p>
-            </div>
-            <div class="col-md-3">
-              <img src="assets/img/Best/item7.jpg" class="img-fluid" alt="3">
-              <h6>PRODUCT THREE</h6><p>$22.00</p>
-            </div>
-            <div class="col-md-3">
-              <img src="assets/img/new-arive/item6.jpg" class="img-fluid" alt="4">
-              <h6>PRODUCT FOUR</h6><p>$22.00</p>
-            </div>
-          </div>
-        </div>
-        <!-- change-->
-       <div class="d-none d-md-block">
-    <div id="desktopCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="row">
-            <div class="col-md-3">
-              <img src="assets/img/new-arive/item6.jpg" class="img-fluid" alt="1">
-              <h6>PRODUCT ONE</h6><p>$22.00</p>
-            </div>
-            <div class="col-md-3">
-              <img src="assets/img/new-arive/item5.jpg" class="img-fluid" alt="2">
-              <h6>PRODUCT TWO</h6><p>$22.00</p>
-            </div>
-            <div class="col-md-3">
-              <img src="assets/img/Best/item9.jpg" class="img-fluid" alt="3">
-              <h6>PRODUCT THREE</h6><p>$22.00</p>
-            </div>
-           
-          </div>
-        </div>
-          
-          </div>
-        </div>
-  </div>
 </section>
 
 
 
+<section class="container-fluid mt-5 best-selling-section px-0">
+  <div class="d-flex justify-content-between align-items-center mb-4 px-3">
+    <h3 class="display-5 fw-medium">BEST SELLING ITEMS</h3>
+    <a href="#" class="btn btn-dark">SHOP ALL</a>
+  </div>
 
+  <!-- Mobile -->
+  <div class="d-block d-md-none">
+    <div id="mobileCarousel2" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+      <div class="carousel-inner">
+        <div class="carousel-item active text-center">
+          <div class="product-card">
+            <img src="assets/img/Best/item1.jpg" class="img-fluid" alt="1">
+           <a href="https://example.com/cart" class="text-decoration-none">
+    <div class="product-overlay d-flex flex-column justify-content-center align-items-center">
+      <div class="d-flex align-items-center gap-3 flex-wrap justify-content-center text-dark">
+        <span class="fw-semibold fs-6 m-0">Add To Cart</span>
+        <div class="icons d-flex gap-2">
+          <i class="bi bi-arrow-right"></i>
+          <i class="bi bi-x-lg"></i>
+          <i class="bi bi-heart"></i>
+        </div>
+      </div>
+    </div>
+  </a>
+            <div class="cart-button d-flex justify-content-between align-items-center px-4 py-2">
+              <h6>PRODUCT ONE</h6><h6>$22.00</h6>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item text-center">
+          <div class="product-card">
+            <img src="assets/img/Best/item10.jpg" class="img-fluid" alt="2">
+            <a href="https://example.com/cart" class="text-decoration-none">
+    <div class="product-overlay d-flex flex-column justify-content-center align-items-center">
+      <div class="d-flex align-items-center gap-3 flex-wrap justify-content-center text-dark">
+        <span class="fw-semibold fs-6 m-0">Add To Cart</span>
+        <div class="icons d-flex gap-2">
+          <i class="bi bi-arrow-right"></i>
+          <i class="bi bi-x-lg"></i>
+          <i class="bi bi-heart"></i>
+        </div>
+      </div>
+    </div>
+  </a>
+            <div class="cart-button d-flex justify-content-between align-items-center px-4 py-2">
+              <h6>PRODUCT TWO</h6><h6>$22.00</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#mobileCarousel2" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#mobileCarousel2" data-bs-slide-to="1"></button>
+      </div>
+    </div>
+  </div>
+
+  <!--laptop -->
+  <div class="d-none d-md-block">
+    <div id="desktopCarousel2" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-inner">
+        <!-- start -->
+        <div class="carousel-item active">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="product-card">
+                <img src="assets/img/Best/item1.jpg" class="img-fluid" alt="1">
+              <a href="https://example.com/cart" class="text-decoration-none">
+    <div class="product-overlay d-flex flex-column justify-content-center align-items-center">
+      <div class="d-flex align-items-center gap-3 flex-wrap justify-content-center text-dark">
+        <span class="fw-semibold fs-6 m-0">Add To Cart</span>
+        <div class="icons d-flex gap-2">
+          <i class="bi bi-arrow-right"></i>
+          <i class="bi bi-x-lg"></i>
+          <i class="bi bi-heart"></i>
+        </div>
+      </div>
+    </div>
+  </a>
+                <div class="cart-button d-flex justify-content-between align-items-center px-4 py-2">
+                  <h6>PRODUCT ONE</h6><h6>$22.00</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="product-card">
+                <img src="assets/img/Best/item10.jpg" class="img-fluid" alt="2">
+               <a href="https://example.com/cart" class="text-decoration-none">
+    <div class="product-overlay d-flex flex-column justify-content-center align-items-center">
+      <div class="d-flex align-items-center gap-3 flex-wrap justify-content-center text-dark">
+        <span class="fw-semibold fs-6 m-0">Add To Cart</span>
+        <div class="icons d-flex gap-2">
+          <i class="bi bi-arrow-right"></i>
+          <i class="bi bi-x-lg"></i>
+          <i class="bi bi-heart"></i>
+        </div>
+      </div>
+    </div>
+  </a>
+                <div class="cart-button d-flex justify-content-between align-items-center px-4 py-2">
+                  <h6>PRODUCT TWO</h6><h6>$22.00</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="product-card">
+                <img src="assets/img/Best/item7.jpg" class="img-fluid" alt="3">
+                <a href="https://example.com/cart" class="text-decoration-none">
+    <div class="product-overlay d-flex flex-column justify-content-center align-items-center">
+      <div class="d-flex align-items-center gap-3 flex-wrap justify-content-center text-dark">
+        <span class="fw-semibold fs-6 m-0">Add To Cart</span>
+        <div class="icons d-flex gap-2">
+          <i class="bi bi-arrow-right"></i>
+          <i class="bi bi-x-lg"></i>
+          <i class="bi bi-heart"></i>
+        </div>
+      </div>
+    </div>
+  </a>
+                <div class="cart-button d-flex justify-content-between align-items-center px-4 py-2">
+                  <h6>PRODUCT THREE</h6><h6>$22.00</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="product-card">
+                <img src="assets/img/Best/item9.jpg" class="img-fluid" alt="4">
+              <a href="https://example.com/cart" class="text-decoration-none">
+    <div class="product-overlay d-flex flex-column justify-content-center align-items-center">
+      <div class="d-flex align-items-center gap-3 flex-wrap justify-content-center text-dark">
+        <span class="fw-semibold fs-6 m-0">Add To Cart</span>
+        <div class="icons d-flex gap-2">
+          <i class="bi bi-arrow-right"></i>
+          <i class="bi bi-x-lg"></i>
+          <i class="bi bi-heart"></i>
+        </div>
+      </div>
+    </div>
+  </a>
+                <div class="cart-button d-flex justify-content-between align-items-center px-4 py-2">
+                  <h6>PRODUCT FOUR</h6><h6>$22.00</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- canch--> 
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="product-card">
+                <img src="assets/img/new-arive/item5.jpg" class="img-fluid" alt="5">
+               <a href="https://example.com/cart" class="text-decoration-none">
+    <div class="product-overlay d-flex flex-column justify-content-center align-items-center">
+      <div class="d-flex align-items-center gap-3 flex-wrap justify-content-center text-dark">
+        <span class="fw-semibold fs-6 m-0">Add To Cart</span>
+        <div class="icons d-flex gap-2">
+          <i class="bi bi-arrow-right"></i>
+          <i class="bi bi-x-lg"></i>
+          <i class="bi bi-heart"></i>
+        </div>
+      </div>
+    </div>
+  </a>
+                <div class="cart-button d-flex justify-content-between align-items-center px-4 py-2">
+                  <h6>PRODUCT FIVE</h6><h6>$22.00</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="product-card">
+                <img src="assets/img/new-arive/item6.jpg" class="img-fluid" alt="6">
+                <a href="https://example.com/cart" class="text-decoration-none">
+    <div class="product-overlay d-flex flex-column justify-content-center align-items-center">
+      <div class="d-flex align-items-center gap-3 flex-wrap justify-content-center text-dark">
+        <span class="fw-semibold fs-6 m-0">Add To Cart</span>
+        <div class="icons d-flex gap-2">
+          <i class="bi bi-arrow-right"></i>
+          <i class="bi bi-x-lg"></i>
+          <i class="bi bi-heart"></i>
+        </div>
+      </div>
+    </div>
+  </a>
+                <div class="cart-button d-flex justify-content-between align-items-center px-4 py-2">
+                  <h6>PRODUCT SIX</h6><h6>$22.00</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="padding-medium" id="blogs">
+    <div class="d-block d-md-flex justify-content-between align-items-center mb-4">
+                <h3 class="display-5 fw-medium">NEWS ARTICLES</h3>
+                <div><a href="blog.html" class="btn btn-dark">read all</a></div>
+            </div>
+<div class="article" >
+                <div class="row">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <a href="single-post.html"> <img src="assets/img/ARTICLES/article1.jpg" class="img-fluid" alt="blog-img">
+                        </a>
+                       <h5 class="fs-3 mt-2"><a href="single-post.html" class="article-names">Best electric product to
+                                buy this season.</a></h5>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <a href="single-post.html"> <img src="assets/img/ARTICLES/article2.jpg" class="img-fluid" alt="blog-img">
+                        </a>
+                        <h5 class="fs-3 mt-2"><a href="single-post.html" class="article-names">How to follow the trend
+                                in budget
+                                list.</a></h5>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <a href="single-post.html"> <img src="assets/img/ARTICLES/article5.jpg" class="img-fluid" alt="blog-img">
+                        </a>
+                        <h5 class="fs-3 mt-2"><a href="single-post.html" class="article-names">unique gadget to own by
+                                tech collectors.</a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 
@@ -368,6 +592,10 @@
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
-   
+  <script src="assets/java/js.js"></script>   
+ 
 </body>
+<footer>
+
+</footer>
 </html>
