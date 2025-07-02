@@ -196,7 +196,10 @@ header h1{
 .book-card{
   width: 100%;
 }
-  
+    .offcanvas-body .d-flex {
+        display: none !important;
+      }
+    
 }
 
 @media screen and (max-width: 430px) {
@@ -218,7 +221,11 @@ header h1{
    
   }
 
-  
+ 
+      .offcanvas-body .d-flex {
+        display: none !important;
+      }
+    
 
 
 }
