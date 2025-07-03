@@ -595,7 +595,7 @@ document.addEventListener("DOMContentLoaded", () => {
     container.appendChild(item);
   });
 });
-*/ // ✅ بيانات المنتجات// ✅ بيانات المنتجات الثابتة
+*/ 
 const products = {
   newArrival: [
     { id: "1", name: "Product One", price: 22, image: "assets/img/new-arive/item1.jpg" },
@@ -614,9 +614,12 @@ const products = {
     { id: "106", name: "Product F", price: 22, image: "assets/img/new-arive/item6.jpg" }
   ]
 };
-
+// ✅ متغيرات عامة
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let pendingItem = null;
+let itemToDeleteId = null;
 
+// ✅ إنشاء بطاقة منتج ديناميكيًا
 function createProductCard(product) {
   const card = document.createElement("div");
   card.className = "product-card";
@@ -637,7 +640,6 @@ function createProductCard(product) {
 
   const removeIcon = document.createElement("i");
   removeIcon.className = "fa-solid fa-xmark";
-
   const heartIcon = document.createElement("i");
   heartIcon.className = "fa-solid fa-heart";
 
@@ -651,6 +653,7 @@ function createProductCard(product) {
   return card;
 }
 
+// ✅ عرض المنتجات في Swiper
 function renderSwiperSection(selector, productList) {
   const container = document.querySelector(selector + " .swiper-wrapper");
   if (!container) return;
@@ -665,33 +668,22 @@ function renderSwiperSection(selector, productList) {
   setupAddToCart();
 }
 
+// ✅ إعداد زر الإضافة
 function setupAddToCart() {
   const buttons = document.querySelectorAll(".add-to-cart");
   buttons.forEach(button => {
     button.addEventListener("click", () => {
-      const id = button.dataset.id;
-      const name = button.dataset.name;
-      const price = parseFloat(button.dataset.price);
-      const image = button.dataset.image;
-
-      pendingItem = { id, name, price, image, quantity: 1 };
-
-      const popup = document.getElementById("confirmationPopup");
-      const backdrop = document.getElementById("popupBackdrop");
-      const popupText = document.getElementById("popupText");
-
-      if (popup && backdrop && popupText) {
-        popupText.innerHTML = `Product: <strong>${name}</strong><br>Price: <strong>$${price}</strong><br><br>Do you want to add this product to the cart?`;
-        popup.classList.remove("d-none");
-        backdrop.classList.remove("d-none");
-      }
+      const { id, name, price, image } = button.dataset;
+      pendingItem = { id, name, price: parseFloat(price), image, quantity: 1 };
+      document.getElementById("popupText").innerHTML = `Product: <strong>${name}</strong><br>Price: <strong>$${price}</strong><br><br>Do you want to add this product to the cart?`;
+      document.getElementById("confirmationPopup").classList.remove("d-none");
+      document.getElementById("popupBackdrop").classList.remove("d-none");
     });
   });
 }
 
 function confirmAddToCart() {
   if (!pendingItem) return;
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
   const existing = cart.find(p => p.id === pendingItem.id);
   if (existing) {
     existing.quantity += 1;
@@ -704,59 +696,225 @@ function confirmAddToCart() {
 }
 
 function closePopup() {
-  const popup = document.getElementById("confirmationPopup");
-  const backdrop = document.getElementById("popupBackdrop");
-  if (popup && backdrop) {
-    popup.classList.add("d-none");
-    backdrop.classList.add("d-none");
-  }
+  document.getElementById("confirmationPopup")?.classList.add("d-none");
+  document.getElementById("popupBackdrop")?.classList.add("d-none");
 }
+new Swiper(".mySwiper", {
+  slidesPerView: 3,
+  spaceBetween: 30,
+  loop: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+    },
+    576: {
+      slidesPerView: 1,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+    992: {
+      slidesPerView: 3,
+    }
+  }
+});
+
+// ✅ عرض السلة في car.html
+function renderCart() {
+  const container = document.getElementById("cart-items");
+  const totalItemsSpan = document.getElementById("total-items");
+  const totalPriceSpan = document.getElementById("total-price");
+
+  if (!container || !totalItemsSpan || !totalPriceSpan) return;
+  container.innerHTML = "";
+
+  if (cart.length === 0) {
+    container.innerHTML = "<p class='text-center'>🛒 Cart is empty</p>";
+    totalItemsSpan.textContent = "0";
+    totalPriceSpan.textContent = "0.00";
+    return;
+  }
+
+  let totalItems = 0;
+  let totalPrice = 0;
+
+  cart.forEach(item => {
+    totalItems += parseInt(item.quantity);
+    totalPrice += item.price * item.quantity;
+
+    const div = document.createElement("div");
+    div.className = "cart-item border p-3 mb-3 rounded";
+    div.innerHTML = `
+      <div class="row align-items-center">
+        <div class="col-md-2">
+          <img src="${item.image}" alt="${item.name}" class="img-fluid rounded" />
+        </div>
+        <div class="col-md-4">
+          <h5>${item.name}</h5>
+          <p>Price: $${item.price}</p>
+        </div>
+        <div class="col-md-3">
+          <label>Quantity:</label>
+          <input type="number" min="1" value="${item.quantity}" data-id="${item.id}" class="form-control quantity-input" />
+        </div>
+        <div class="col-md-3 text-end">
+          <button class="btn btn-danger btn-sm delete-btn" data-id="${item.id}">🗑️ Delete</button>
+        </div>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+
+  totalItemsSpan.textContent = totalItems;
+  totalPriceSpan.textContent = totalPrice.toFixed(2);
+
+  document.querySelectorAll(".delete-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      itemToDeleteId = btn.dataset.id;
+      showPopup("هل أنت متأكد أنك تريد حذف هذا المنتج؟");
+    });
+  });
+
+  document.querySelectorAll(".quantity-input").forEach(input => {
+    input.addEventListener("change", e => {
+      const id = e.target.dataset.id;
+      const newQty = parseInt(e.target.value);
+      if (newQty < 1) return;
+      const targetItem = cart.find(p => p.id === id);
+      if (targetItem) {
+        targetItem.quantity = newQty;
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+      }
+    });
+  });
+}
+
+function deleteItemById(id) {
+  cart = cart.filter(item => item.id !== id);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+function clearCart() {
+  cart = [];
+  localStorage.removeItem("cart");
+  renderCart();
+}
+
+function showPopup(message) {
+  document.getElementById("popupContent").innerHTML = `<p>${message}</p>`;
+  document.getElementById("confirmationPopup").classList.remove("d-none");
+  document.getElementById("popupBackdrop").classList.remove("d-none");
+}
+
+// ✅ تأكيد الطلب من صفحة checkout
+function setupCheckout() {
+  const form = document.getElementById("checkout-form");
+  const summary = document.getElementById("order-summary");
+  const message = document.getElementById("order-message");
+
+  if (!form || !summary || !message) return;
+
+  if (cart.length === 0) {
+    summary.innerHTML = `
+      <div class="text-center">
+        <i class="fa-solid fa-cart-shopping fa-3x text-muted"></i>
+        <p class="mt-3 text-danger fw-bold">⚠️ السلة فارغة، لا يمكنك متابعة الطلب.</p>
+      </div>`;
+    form.classList.add("d-none");
+    return;
+  }
+
+  summary.innerHTML = "";
+  let total = 0;
+  cart.forEach(item => {
+    total += item.price * item.quantity;
+    summary.innerHTML += `
+      <div class="d-flex justify-content-between border-bottom py-2 align-items-center">
+        <div class="d-flex align-items-center gap-3">
+          <img src="${item.image}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px;">
+          <div>
+            <strong>${item.name}</strong><br>
+            <small>× ${item.quantity}</small>
+          </div>
+        </div>
+        <div>$${(item.price * item.quantity).toFixed(2)}</div>
+      </div>`;
+  });
+
+  summary.innerHTML += `
+    <div class="d-flex justify-content-between fw-bold pt-3">
+      <div>Total:</div>
+      <div>$${total.toFixed(2)}</div>
+    </div>`;
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const card = document.getElementById("card").value.trim();
+
+    if (!name || !address || !email || !card) {
+      message.className = "alert alert-danger text-center";
+      message.textContent = "⚠️ الرجاء تعبئة جميع الحقول.";
+      message.classList.remove("d-none");
+      return;
+    }
+
+    // ✅ إظهار رسالة تأكيد و إعادة توجيه
+    message.className = "alert alert-success text-center";
+    message.textContent = "✅ تم تنفيذ الطلب بنجاح! سيتم تحويلك للصفحة الرئيسية...";
+    message.classList.remove("d-none");
+
+    localStorage.removeItem("cart");
+    cart = [];
+    form.reset();
+
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 3000);
+  });
+}
+
+// ✅ تحميل الصفحة
+window.addEventListener("DOMContentLoaded", () => {
+  renderSwiperSection(".new-arrival-swiper", products.newArrival);
+  renderSwiperSection(".best-selling-swiper", products.bestSelling);
+  renderCart();
+  setupCheckout();
+  checkConnection();
+  const confirmBtn = document.getElementById("confirmAddBtn");
+  if (confirmBtn) confirmBtn.addEventListener("click", confirmAddToCart);
+});
+
+
+document.getElementById("confirmDeleteBtn")?.addEventListener("click", () => {
+  if (itemToDeleteId === "clear") clearCart();
+  else if (itemToDeleteId) deleteItemById(itemToDeleteId);
+  closePopup();
+  itemToDeleteId = null;
+});
+
+document.getElementById("clear-cart")?.addEventListener("click", () => {
+  itemToDeleteId = "clear";
+  showPopup("هل تريد مسح كل محتويات السلة؟");
+});
 
 function checkConnection() {
   const overlay = document.getElementById("offlineOverlay");
-  if (navigator.onLine) {
-    overlay.style.display = "none";
-  } else {
-    overlay.style.display = "flex";
-  }
+  if (!overlay) return;
+  overlay.style.display = navigator.onLine ? "none" : "flex";
 }
 
-window.addEventListener("load", () => {
-  renderSwiperSection(".new-arrival-swiper", products.newArrival);
-  renderSwiperSection(".best-selling-swiper", products.bestSelling);
-
-  const confirmBtn = document.getElementById("confirmAddBtn");
-  if (confirmBtn) confirmBtn.addEventListener("click", confirmAddToCart);
-
-  new Swiper(".new-arrival-swiper", {
-    slidesPerView: 4,
-    spaceBetween: 20,
-    loop: true,
-    autoplay: { delay: 2000 },
-    breakpoints: {
-      0: { slidesPerView: 1.2 },
-      576: { slidesPerView: 2 },
-      768: { slidesPerView: 3 },
-      992: { slidesPerView: 4 }
-    }
-  });
-
-  new Swiper(".best-selling-swiper", {
-    slidesPerView: 4,
-    spaceBetween: 20,
-    loop: true,
-    autoplay: { delay: 2000 },
-    breakpoints: {
-      0: { slidesPerView: 1.2 },
-      576: { slidesPerView: 2 },
-      
-      768: { slidesPerView: 3 },
-      992: { slidesPerView: 4 }
-    }
-  });
-
-  checkConnection();
-});
-
 window.addEventListener("online", checkConnection);
-window.addEventListener("offline", checkConnection);
+window.addEventListener("offline", checkConnection);   
