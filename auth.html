@@ -1,0 +1,113 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login / Register - GadgetHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f8f9fa;
+    }
+    .auth-box {
+      max-width: 400px;
+      margin: 80px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+<div class="auth-box">
+  <h3 class="text-center mb-4" id="formTitle">Register</h3>
+
+  <div id="alertBox"></div>
+
+
+  <div id="registerForm">
+    <input type="text" id="regName" class="form-control mb-2" placeholder="Full Name" required>
+    <input type="email" id="regEmail" class="form-control mb-2" placeholder="Email" required>
+    <input type="password" id="regPassword" class="form-control mb-3" placeholder="Password" required>
+    <button class="btn btn-primary w-100" onclick="registerUser()">Register</button>
+    <p class="mt-3 text-center">Already have an account? 
+      <a href="#" onclick="toggleForm('login')">Login</a>
+    </p>
+  </div>
+
+ 
+  <div id="loginForm" style="display: none;">
+    <input type="email" id="loginEmail" class="form-control mb-2" placeholder="Email" required>
+    <input type="password" id="loginPassword" class="form-control mb-3" placeholder="Password" required>
+    <button class="btn btn-success w-100" onclick="loginUser()">Login</button>
+    <p class="mt-3 text-center">Don't have an account? 
+      <a href="#" onclick="toggleForm('register')">Register</a>
+    </p>
+  </div>
+</div>
+
+<div id="offlineOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; color: white; font-size: 18px; text-align: center;">
+  <img src="https://i.gifer.com/ZZ5H.gif" alt="Loading..." width="80" />
+  
+</div>
+
+<script>
+  function toggleForm(type) {
+    document.getElementById("formTitle").innerText = type === 'login' ? "Login" : "Register";
+    document.getElementById("registerForm").style.display = type === 'register' ? "block" : "none";
+    document.getElementById("loginForm").style.display = type === 'login' ? "block" : "none";
+    document.getElementById("alertBox").innerHTML = "";
+  }
+
+  function showAlert(message, type = "success") {
+    document.getElementById("alertBox").innerHTML = `
+      <div class="alert alert-${type} text-center" role="alert">
+        ${message}
+      </div>
+    `;
+  }
+
+  function registerUser() {
+    const name = document.getElementById("regName").value.trim();
+    const email = document.getElementById("regEmail").value.trim();
+    const password = document.getElementById("regPassword").value.trim();
+
+    if (!name || !email || !password) {
+      showAlert("Please fill in all fields", "danger");
+      return;
+    }
+
+    const user = { name, email, password };
+    localStorage.setItem("registeredUser", JSON.stringify(user));
+    localStorage.setItem("currentUser", JSON.stringify(user));
+
+    showAlert(" Registration successful! Redirecting to home...");
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 2500);
+  }
+
+  function loginUser() {
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
+    const savedUser = JSON.parse(localStorage.getItem("registeredUser"));
+
+    if (savedUser && savedUser.email === email && savedUser.password === password) {
+      localStorage.setItem("currentUser", JSON.stringify(savedUser));
+      showAlert(` Welcome, ${savedUser.name}! Redirecting...`);
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 2500);
+    } else {
+      showAlert(" Invalid email or password.", "danger");
+    }
+  }
+</script>
+
+</body>
+</html>
