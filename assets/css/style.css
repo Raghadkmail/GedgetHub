@@ -524,7 +524,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--heading-font);
+  font-family: var(--heading-font) !important;
 }
 
 a {
@@ -540,17 +540,28 @@ i {
   color: white !important;
   opacity: 1 !important;
 }
-
+.navbar-expand-lg .navbar-nav .nav-link{
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 10px 15px;
+}
+a.navbar-brand{
+  font-size: 3rem;
+  font-weight: 700;
+  color: white !important;
+}
 .nav-link:hover {
   color: #0a0a0a !important;
 }
 
 .dropdown-menu {
   background-color: white !important;
+ 
 }
 
 .dropdown-item {
   color: rgb(3, 3, 3);
+font-size: 1rem;
 }
 
 .dropdown-item:hover {
@@ -565,24 +576,36 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   height: 90vh;
-  height: 20%;
   color: white;
   display: flex;
   flex-direction: column;
 }
 header h3 {
-  font-size: 1.5rem;
-  margin-top: 20px;
+  font-size: 2.5rem;
+  margin-top: 10px;
+  font-weight: 400;
+  color: #f0f0f0;
 }
 
 header h1 {
   font-size: 5rem;
-  margin-top: 10px;
+  margin-top: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #ffffff;
+  white-space: nowrap;
+
 }
 
 header button {
-  margin: 20px 5%;
-  padding: 20px 30px;
+  width: 40%;
+  height: 15%;
+  margin-top: 2rem;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  font-weight: 500;
+  border-radius: 0;
 }
 
 /* ========== الأقسام المصورة ========== */
