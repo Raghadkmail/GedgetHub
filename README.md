@@ -19,9 +19,9 @@ This project simulates a basic online shopping experience including product brow
 |--------------|-----------------------------------------------------------------------------|
 | `index.html` | Home page with hero, categories, product carousel, and featured sections.   |
 | `car.html`   | Shopping cart with item management and total price calculation.             |
-| `checkout.html` | Checkout form with validation and order confirmation message.           |
+| `checkout.html` | Checkout form with validation and order confirmation message.            |
 | `auth.html`  | Login/Register simulation using localStorage.                               |
-| `produts.html` | Full product page with filter by category, price, and brand.             |
+| `produts.html` | Full product page with filter by category, price, and brand.              |
 
 ---
 
@@ -82,7 +82,7 @@ oline/
 ```bash
 git clone https://github.com/Raghadkmail/GedgetHub.git
 cd gadgethub
-open index.html  # or open with Live Server in VS Code
+open index.html  
 ```
 
 ---
