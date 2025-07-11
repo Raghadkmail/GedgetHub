@@ -196,6 +196,12 @@ text-align: center;
           <li><a href="https://pin.it/5OIi0lbZu">PINTEREST</a></li>
         </ul>
       </div>
+
+
+
+
+
+      
       <div class="footer-column">
         Do you have any queries?<br>
         <a href="#" class="text-decoration-underline text-white">youremailaddress@gmail.com</a> <br>
@@ -205,7 +211,7 @@ text-align: center;
     </div>
     <div class="copyright text-center">
       <p class="m-0 pb-3">© All rights reserved by
-        <a href="https://github.com/dashboard" target="_blank" class="text-decoration-underline text-white">RAghad kmail</a></p>
+        <a href="https://github.com/dashboard" target="_blank" class="text-decoration-underline text-white"> RAghad kmail</a></p>
     </div>
   </footer>
 
@@ -284,6 +290,8 @@ text-align: center;
     }
 
 function addToCart(product) {
+  product.id = parseInt(product.id); 
+
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   const existingItem = cart.find(item => item.id === product.id);

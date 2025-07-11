@@ -799,6 +799,7 @@ function renderCart() {
 }
 
 function deleteItemById(id) {
+   id = parseInt(id);
   cart = cart.filter(item => item.id !== id);
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
